@@ -3,3 +3,15 @@
 <%= link_to "Signout", destroy_user_session_path, method: :delete %>
 
 <%= link_to "Sign Into Instagram", '/users/auth/instagram' %>
+
+<ul>
+<% current_user.instagram_feed.each do |feed_item| %>
+  <li><%= feed_item.user.full_name %></li>
+<% end %>
+</ul>
+
+<ul>
+  <% current_user.twitter_feed.each do |feed_item| %>
+    <li><%= feed_item.text %>
+  <% end %>
+</ul>

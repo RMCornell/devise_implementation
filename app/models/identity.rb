@@ -7,6 +7,7 @@ class Identity < ActiveRecord::Base
     identity = find_or_create_by(provider: auth.provider, uid: auth.uid) if identity.nil?
 
     identity.accesstoken = auth.credentials.token
+    identity.accesstokensecret = auth.credentials.secret
     identity.refreshtoken = auth.credentials.refresh_token
     identity.name = auth.info.name
     identity.email = auth.info.email

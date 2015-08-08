@@ -17,4 +17,35 @@ class FormUser < User
   def email_required?
     true
   end
+
+  def instagram
+    identities.where( :provider => 'instagram').first
+  end
+
+  def instagram_client
+    @instagram_cient ||= Instagram.client( access_token: instagram.accesstoken)
+  end
+
+  def instagram_feed
+    instagram_client.user_media_feed
+  end
+
+  def twitter
+    identities.where( :provider => 'twitter').first
+  end
+
+  def twitter_client
+    @client = Twitter::REST::Client.new do |config|
+      config.consumer_key = ENV['twitter_key']
+      config.consumer_secret = ENV['twitter_secret']
+      config.access_token = twitter.accesstoken
+      config.access_token_secret = twitter.accesstokensecret
+    end
+  end
+
+  def twitter_feed
+    twitter_client.home_timeline
+  end
+
+
 end
