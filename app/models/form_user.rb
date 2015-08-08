@@ -46,6 +46,4 @@ class FormUser < User
   def twitter_feed
     twitter_client.home_timeline
   end
-
-
 end
