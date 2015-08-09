@@ -26,7 +26,7 @@
   </nav>
 </div>
 
-<ul class="large-block-grid-2">
+<ul class="small-block-grid-3">
     <% current_user.instagram_feed.each do |feed_item| %>
       <li>
         <div class="row">
@@ -52,23 +52,19 @@
           </div>
     <% end %>
   </li>
+  <li>
+    <div class="row">
+      <% current_user.twitter_feed.each do |feed_item| %>
+          <div class="small-6 small-centered columns">
+            <div class="service">
+              <div class="service-icon-box">
+                <div class="service-icon"><%= image_tag feed_item.user.profile_image_url %></div>
+              </div>
+              <h4 class="service-heading"><%= link_to feed_item.user.name, "http://www.twitter.com/" + feed_item.user.screen_name  %></h4>
+              <p class="service-description"><%= feed_item.text %></p>
+            </div>
+          </div>
+          </div>
+      <% end %>
+  </li>
 </ul>
-
-
-
-
-
-
-<div class="row">
-<% current_user.twitter_feed.each do |feed_item| %>
-    <div class="small-6 small-centered columns">
-      <div class="service">
-        <div class="service-icon-box">
-            <div class="service-icon"><%= image_tag feed_item.user.profile_image_url %></div>
-        </div>
-        <h4 class="service-heading"><%= link_to feed_item.user.name, "http://www.twitter.com/" + feed_item.user.screen_name  %></h4>
-        <p class="service-description"><%= feed_item.text %></p>
-      </div>
-    </div>
-  </div>
-<% end %>
