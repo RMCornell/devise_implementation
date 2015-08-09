@@ -15,157 +15,11 @@
  *= require foundation_and_overrides
 
  */
-.callout-card {
-    background: white;
-    border: 1px solid #333;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    margin: 1rem 0;
-    overflow: hidden; }
-.callout-card .card-label {
-    border-color: transparent #333 transparent transparent;
-    border-color: rgba(255, 255, 255, 0) #333333 rgba(255, 255, 255, 0) rgba(255, 255, 255, 0); }
-.callout-card.primary {
-    border-color: #446cb3; }
-.callout-card.primary .card-label {
-    border-color: transparent #446cb3 transparent transparent;
-    border-color: rgba(255, 255, 255, 0) #446cb3 rgba(255, 255, 255, 0) rgba(255, 255, 255, 0); }
-.callout-card.secondary {
-    border-color: #adb2bd; }
-.callout-card.secondary .card-label {
-    border-color: transparent #adb2bd transparent transparent;
-    border-color: rgba(255, 255, 255, 0) #adb2bd rgba(255, 255, 255, 0) rgba(255, 255, 255, 0); }
-.callout-card.info {
-    border-color: #89c4f4; }
-.callout-card.info .card-label {
-    border-color: transparent #89c4f4 transparent transparent;
-    border-color: rgba(255, 255, 255, 0) #89c4f4 rgba(255, 255, 255, 0) rgba(255, 255, 255, 0); }
-.callout-card.alert {
-    border-color: #f22613; }
-.callout-card.alert .card-label {
-    border-color: transparent #f22613 transparent transparent;
-    border-color: rgba(255, 255, 255, 0) #f22613 rgba(255, 255, 255, 0) rgba(255, 255, 255, 0); }
-.callout-card.success {
-    border-color: #87d37c; }
-.callout-card.success .card-label {
-    border-color: transparent #87d37c transparent transparent;
-    border-color: rgba(255, 255, 255, 0) #87d37c rgba(255, 255, 255, 0) rgba(255, 255, 255, 0); }
-.callout-card.warning {
-    border-color: #f89406; }
-.callout-card.warning .card-label {
-    border-color: transparent #f89406 transparent transparent;
-    border-color: rgba(255, 255, 255, 0) #f89406 rgba(255, 255, 255, 0) rgba(255, 255, 255, 0); }
-.callout-card .card-label {
-    border-style: solid;
-    border-width: 0 70px 40px 0;
-    float: right;
-    height: 0px;
-    width: 0px;
-    transform: rotate(360deg); }
-.callout-card .callout-card-content {
-    padding: 0.5rem 1.5rem 0.875rem; }
-.callout-card.radius {
-    border-radius: 0.6rem; }
-.callout-card .label-text {
-    color: #fff;
-    font-size: 0.75rem;
-    font-weight: bold;
-    position: relative;
-    right: -40px;
-    top: 2px;
-    white-space: nowrap;
-    transform: rotate(30deg); }
 
-
-.article-card {
-    border: 1px solid #d7d7d7;
-    margin-bottom: 1.5rem;
-    box-shadow: 2px 4px 5px 0px #d7d7d7; }
-.article-card .card-content {
-    background: #fff;
-    margin: 1.25rem; }
-.article-card .card-content .post-author {
-    text-align: center; }
-.article-card .card-content h4 {
-    color: #CF000F; }
-.article-card .card-content p {
-    color: #757D75; }
-.article-card .card-content a i {
-    font-weight: 300;
-    color: #757D75;
-    margin: 0 .5rem;
-    padding: 5px 7px 5px 7px;
-    border: 1px solid #757D75;
-    border-radius: 50%; }
-.article-card .card-content img.post-icon {
-    position: absolute;
-    width: 3rem;
-    border-radius: 50%;
-    margin-top: -3rem; }
-
-
-.card {
-    position: relative;
-    padding: 0;
-    margin-bottom: 50px;
-    -webkit-perspective: 500;
-    perspective: 500;
-}
-
-.card .container {
-    -webkit-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-    -webkit-transition: 0.6s;
-    transition: 0.6s;
-}
-
-.card .container .front, .card .container .back {
-    width: 100%;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-}
-
-.card .container .front .row, .card .container .front .column, .card .container .front .columns, .card .container .back .row, .card .container .back .column, .card .container .back .columns {
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-}
-
-.card .container .front {
-    z-index: 2;
-}
-
-.card .container .back {
-    position: absolute;
-    height: 100%;
-    left: 0;
-    top: 0;
-    overflow-y: scroll;
-    -webkit-transform: rotateY(180deg);
-    transform: rotateY(180deg);
-}
-
-.card .container:hover {
-    -webkit-transform: rotate3d(0, 1, 0, 180deg);
-    transform: rotate3d(0, 1, 0, 180deg);
-}
-
-.card .container {
-    border: solid 1px #eeeeee;
-}
-
-.card .container .front, .card .container .back {
-    padding: 1em;
-}
-
-.card.square .container {
-    width: 100%;
-    height: 0;
-    padding-bottom: 100%;
-}
 
 
 .service {
-    background-color: lightgrey;
-    width: 70%;
+    width: 80%;
     height: 500px;
     margin-left: auto;
     margin-right: auto;
@@ -177,7 +31,7 @@
     transition: all 0.3s ease; }
 .service .service-icon-box {
     position: relative;
-    top: 100px;
+    top: 50px;
     display: inline-block;
     margin-bottom: 40px;
     padding: 10px;
@@ -190,7 +44,8 @@
     -webkit-transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
     transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55); }
 .service .service-description {
-    width: 80%;
+    width: 90%;
+    height: auto;
     margin: 0 auto;
     opacity: 0;
     -webkit-transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);

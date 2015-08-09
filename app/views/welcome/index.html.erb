@@ -2,10 +2,8 @@
   <nav class="top-bar" data-topbar role="navigation">
     <ul class="title-area">
       <li class="name">
-        <h1><a href="#">FeedONE</a></h1>
+        <h1><%= link_to "FeedONE", root_path %></h1>
       </li>
-      <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-      <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
     </ul>
 
     <section class="top-bar-section">
@@ -15,9 +13,9 @@
           <a href="#">User Profile Information</a>
           <ul class="dropdown">
             <li><a href="#">Profile Information</a></li>
-            <li><a href="#">Facebook Only</a></li>
-            <li><a href="#">Twitter Only</a></li>
-            <li><%= link_to "Sign Into Instagram", '/users/auth/instagram' %></li>
+            <li><a href="#">Authorize Facebook</a></li>
+            <li><a href="#">Authroize Twitter</a></li>
+            <li><%= link_to "Authorize Instagram", '/users/auth/instagram' %></li>
             <li><%= link_to "Signout", destroy_user_session_path, method: :delete %></li>
           </ul>
         </li>
@@ -28,21 +26,12 @@
 
 <ul class="small-block-grid-3">
     <% current_user.instagram_feed.each do |feed_item| %>
-      <li>
+      <li id="feed-items">
         <div class="row">
             <div class="service">
               <div class="service-icon-box">
-                <div class="service-icon">
-                  <div data-reveal-id="myModal">
-                    <%= image_tag feed_item.images.thumbnail.url %>
-                  </div>
-                  <div id="myModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
-                    <%= link_to "#{feed_item.link}", feed_item.link %>
-                    <a class="close-reveal-modal" aria-label="Close">&#215;</a>
-                  </div>
+                <div class="service-icon"><%= image_tag feed_item.images.thumbnail.url %></div>
                 </div>
-              </div>
-
               <p class="service-heading"><%= feed_item.user.full_name %></p>
               <p class="service-description">
                 <%= feed_item.caption.text %><br>
@@ -50,12 +39,12 @@
               </p>
             </div>
           </div>
+      </li>
     <% end %>
-  </li>
+
+  <% current_user.twitter_feed.each do |feed_item| %>
   <li>
     <div class="row">
-      <% current_user.twitter_feed.each do |feed_item| %>
-          <div class="small-6 small-centered columns">
             <div class="service">
               <div class="service-icon-box">
                 <div class="service-icon"><%= image_tag feed_item.user.profile_image_url %></div>
@@ -63,7 +52,6 @@
               <h4 class="service-heading"><%= link_to feed_item.user.name, "http://www.twitter.com/" + feed_item.user.screen_name  %></h4>
               <p class="service-description"><%= feed_item.text %></p>
             </div>
-          </div>
           </div>
       <% end %>
   </li>
