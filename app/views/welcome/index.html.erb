@@ -15,7 +15,7 @@
             </div>
 
             <div class="back">
-              <p><%= link_to feed_item.user.full_name, "https://www.instagram.com/" + feed_item.user.username %></p>
+              <p><%= link_to feed_item.user.full_name, "https://www.instagram.com/" + feed_item.user.username %><br><%= feed_item.likes.values.first  %> likes</p>
               <em><%= distance_of_time_in_words_to_now(Time.at(feed_item.created_time.to_i)) + " ago" %></em><br>
               <p><%= link_to "#{feed_item.link}", feed_item.link %></p>
               <p><%= feed_item.caption.text %></p>
@@ -25,9 +25,14 @@
                 <a href="#" data-reveal-id="<%= feed_item.user.username %>" xmlns="http://www.w3.org/1999/html">Comments</a>
 
                 <div id="<%= feed_item.user.username %>" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
-                    <p class="lead">
-                      <%= feed_item.likes.values.first  %> likes
-                    </p>
+                    <div>
+                      <% feed_item.comments.data.each do |comment| %>
+                          <p>
+                            <strong><%= link_to comment.from.username, "https://www.instagram.com/" + comment.from.username %></strong>
+                            <em><%= comment.text %></em>
+                          </p>
+                      <% end %>
+                    </div>
                   <a class="close-reveal-modal" aria-label="Close">&#215;</a>
                 </div>
               </div>
