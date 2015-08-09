@@ -1,9 +1,11 @@
+<!-- Header -->
 <%= render "welcome/header" %>
 
-<%= render 'instagram_card' %>
-
+<!-- Media Feed -->
 <div id="feed">
 <ul class="small-block-grid-3">
+
+  <!-- Instagram Feed Cards-->
   <% current_user.instagram_feed.each do |feed_item| %>
       <li>
         <div class="card">
@@ -13,15 +15,29 @@
             </div>
 
             <div class="back">
-              <h5><%= feed_item.user.full_name %></h5>
+              <p><%= link_to feed_item.user.full_name, "https://www.instagram.com/" + feed_item.user.username %></p>
+              <em><%= distance_of_time_in_words_to_now(Time.at(feed_item.created_time.to_i)) + " ago" %></em><br>
               <p><%= link_to "#{feed_item.link}", feed_item.link %></p>
               <p><%= feed_item.caption.text %></p>
+
+              <!-- Modal Window-->
+              <div>
+                <a href="#" data-reveal-id="<%= feed_item.user.username %>" xmlns="http://www.w3.org/1999/html">Comments</a>
+
+                <div id="<%= feed_item.user.username %>" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+                    <p class="lead">
+                      <%= feed_item.likes.values.first  %> likes
+                    </p>
+                  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+                </div>
+              </div>
+              </div>
             </div>
           </div>
-        </div>
       </li>
   <% end %>
 
+<!-- Twitter Feed Cards -->
     <% current_user.twitter_feed.each do |feed_item| %>
         <li>
             <div class="service">
