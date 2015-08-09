@@ -35,7 +35,7 @@ class FormUser < User
   end
 
   def twitter_client
-    @client = Twitter::REST::Client.new do |config|
+    @client  ||= Twitter::REST::Client.new do |config|
       config.consumer_key = ENV['twitter_key']
       config.consumer_secret = ENV['twitter_secret']
       config.access_token = twitter.accesstoken
