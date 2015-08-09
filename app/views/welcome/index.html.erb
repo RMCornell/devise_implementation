@@ -1,3 +1,5 @@
+
+
 <div class="sticky">
   <nav class="top-bar" data-topbar role="navigation">
     <ul class="title-area">
@@ -23,10 +25,10 @@
     </section>
   </nav>
 </div>
-
+<div id="feed">
 <ul class="small-block-grid-3">
     <% current_user.instagram_feed.each do |feed_item| %>
-      <li id="feed-items">
+      <li>
         <div class="row">
             <div class="service">
               <div class="service-icon-box">
@@ -56,3 +58,4 @@
       <% end %>
   </li>
 </ul>
+</div>
