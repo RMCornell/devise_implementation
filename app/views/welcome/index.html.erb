@@ -1,61 +1,43 @@
+<%= render "welcome/header" %>
 
+<%= render 'instagram_card' %>
 
-<div class="sticky">
-  <nav class="top-bar" data-topbar role="navigation">
-    <ul class="title-area">
-      <li class="name">
-        <h1><%= link_to "FeedONE", root_path %></h1>
-      </li>
-    </ul>
-
-    <section class="top-bar-section">
-      <!-- Right Nav Section -->
-      <ul class="right">
-        <li class="has-dropdown">
-          <a href="#">User Profile Information</a>
-          <ul class="dropdown">
-            <li><a href="#">Profile Information</a></li>
-            <li><a href="#">Authorize Facebook</a></li>
-            <li><a href="#">Authroize Twitter</a></li>
-            <li><%= link_to "Authorize Instagram", '/users/auth/instagram' %></li>
-            <li><%= link_to "Signout", destroy_user_session_path, method: :delete %></li>
-          </ul>
-        </li>
-      </ul>
-    </section>
-  </nav>
-</div>
 <div id="feed">
 <ul class="small-block-grid-3">
-    <% current_user.instagram_feed.each do |feed_item| %>
+  <% current_user.instagram_feed.each do |feed_item| %>
       <li>
-        <div class="row">
-            <div class="service">
-              <div class="service-icon-box">
-                <div class="service-icon"><%= image_tag feed_item.images.thumbnail.url %></div>
-                </div>
-              <p class="service-heading"><%= feed_item.user.full_name %></p>
-              <p class="service-description">
-                <%= feed_item.caption.text %><br>
-                <%= link_to "#{feed_item.link}", feed_item.link %><br>
-              </p>
+        <div class="card">
+          <div class="container">
+            <div class="front">
+              <%= image_tag feed_item.images.standard_resolution.url %>
             </div>
-          </div>
-      </li>
-    <% end %>
 
-  <% current_user.twitter_feed.each do |feed_item| %>
-  <li>
-    <div class="row">
-            <div class="service">
-              <div class="service-icon-box">
-                <div class="service-icon"><%= image_tag feed_item.user.profile_image_url %></div>
-              </div>
-              <h4 class="service-heading"><%= link_to feed_item.user.name, "http://www.twitter.com/" + feed_item.user.screen_name  %></h4>
-              <p class="service-description"><%= feed_item.text %></p>
+            <div class="back">
+              <h5><%= feed_item.user.full_name %></h5>
+              <p><%= link_to "#{feed_item.link}", feed_item.link %></p>
+              <p><%= feed_item.caption.text %></p>
             </div>
           </div>
+        </div>
+      </li>
+  <% end %>
+
+    <% current_user.twitter_feed.each do |feed_item| %>
+        <li>
+            <div class="service">
+                <div class="service-icon-box">
+                    <div class="service-icon">
+                        <%= image_tag feed_item.user.profile_image_url %>
+                    </div>
+                </div>
+                <h4 class="service-heading">
+                    <%= link_to feed_item.user.name, "http://www.twitter.com/" + feed_item.user.screen_name  %>
+                </h4>
+                <p class="service-description">
+                    <%= feed_item.text %>
+                </p>
+            </div>
       <% end %>
-  </li>
-</ul>
+        </li>
+    </ul>
 </div>

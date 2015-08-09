@@ -1,0 +1,25 @@
+<div class="sticky">
+  <nav class="top-bar" data-topbar role="navigation">
+    <ul class="title-area">
+      <li class="name">
+        <h1><%= link_to "FeedONE", root_path %></h1>
+      </li>
+    </ul>
+
+    <section class="top-bar-section">
+      <!-- Right Nav Section -->
+      <ul class="right">
+        <li class="has-dropdown">
+          <a href="#">User Profile Information</a>
+          <ul class="dropdown">
+            <li><a href="#">Profile Information</a></li>
+            <li><a href="#">Authorize Facebook</a></li>
+            <li><a href="#">Authroize Twitter</a></li>
+            <li><%= link_to "Authorize Instagram", '/users/auth/instagram' %></li>
+            <li><%= link_to "Signout", destroy_user_session_path, method: :delete %></li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+  </nav>
+</div>
