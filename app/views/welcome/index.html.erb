@@ -22,9 +22,9 @@
 
               <!-- Modal Window-->
               <div>
-                <a href="#" data-reveal-id="<%= feed_item.user.username %>" xmlns="http://www.w3.org/1999/html">Comments</a>
+                <a href="#" data-reveal-id="user-<%= feed_item.caption.id %>" xmlns="http://www.w3.org/1999/html">Comments</a>
 
-                <div id="<%= feed_item.user.username %>" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+                <div id="user-<%= feed_item.caption.id %>" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
                     <div>
                       <% feed_item.comments.data.each do |comment| %>
                           <p>
