@@ -1,0 +1,2 @@
+module OmniautnCallbacksHelper
+end

@@ -1,0 +1,11 @@
+<a href="#" data-reveal-id="myModal" xmlns="http://www.w3.org/1999/html">Comments</a>
+
+<div id="myModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+  <% current_user.instagram_feed.each do |feed_item| %>
+    <p class="lead">
+      <%= feed_item.likes.values.first  %> likes
+    </p>
+  <% end %>
+</div>
+
+<a class="close-reveal-modal" aria-label="Close">&#215;</a>

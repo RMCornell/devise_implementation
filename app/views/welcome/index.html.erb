@@ -1,0 +1,64 @@
+<!-- Header -->
+<%= render "welcome/header" %>
+
+<!-- Media Feed -->
+<div id="feed">
+<ul class="small-block-grid-3">
+
+  <!-- Instagram Feed Cards-->
+  <% current_user.instagram_feed.each do |feed_item| %>
+      <li>
+        <div class="card">
+          <div class="container">
+            <div class="front">
+              <%= image_tag feed_item.images.standard_resolution.url %>
+            </div>
+
+            <div class="back">
+              <p><%= link_to feed_item.user.full_name, "https://www.instagram.com/" + feed_item.user.username %><br><%= feed_item.likes.values.first  %> likes</p>
+              <em><%= distance_of_time_in_words_to_now(Time.at(feed_item.created_time.to_i)) + " ago" %></em><br>
+              <p><%= link_to "#{feed_item.link}", feed_item.link %></p>
+              <p><%= feed_item.caption.text %></p>
+
+              <!-- Modal Window-->
+              <div>
+                <a href="#" data-reveal-id="user-<%= feed_item.caption.id %>" xmlns="http://www.w3.org/1999/html">Comments</a>
+
+                <div id="user-<%= feed_item.caption.id %>" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+                    <div>
+                      <% feed_item.comments.data.each do |comment| %>
+                          <p>
+                            <strong><%= link_to comment.from.username, "https://www.instagram.com/" + comment.from.username %></strong>
+                            <em><%= comment.text %></em>
+                          </p>
+                      <% end %>
+                    </div>
+                  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
+      </li>
+  <% end %>
+
+<!-- Twitter Feed Cards -->
+    <% current_user.twitter_feed.each do |feed_item| %>
+        <li>
+            <div class="service">
+                <div class="service-icon-box">
+                    <div class="service-icon">
+                        <%= image_tag feed_item.user.profile_image_url %>
+                    </div>
+                </div>
+                <h4 class="service-heading">
+                    <%= link_to feed_item.user.name, "http://www.twitter.com/" + feed_item.user.screen_name  %>
+                </h4>
+                <p class="service-description">
+                    <%= feed_item.text %>
+                </p>
+            </div>
+      <% end %>
+        </li>
+    </ul>
+</div>
